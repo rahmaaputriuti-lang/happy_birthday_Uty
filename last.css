@@ -1,0 +1,559 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Baloo+2:wght@600;700;800&family=Quicksand:wght@400;500;600;700&display=swap');
+
+:root {
+    --pink: #ff5f9e;
+    --violet: #a855f7;
+    --ink: #6b2a52;
+    --glass: rgba(255, 255, 255, 0.6);
+    --stroke: rgba(255, 255, 255, 0.85);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: none;
+}
+
+body {
+    min-height: 100vh;
+    min-height: 100dvh;
+    background: linear-gradient(160deg, #ffeede 0%, #ffe6f2 35%, #ece9ff 70%, #e6f6ff 100%);
+    background-attachment: fixed;
+    font-family: 'Quicksand', sans-serif;
+    overflow-x: hidden;
+    color: var(--ink);
+    padding-bottom: env(safe-area-inset-bottom);
+    -webkit-text-size-adjust: 100%;
+}
+
+.fx-canvas {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9998;
+}
+
+/* ---------- kursor ---------- */
+.cursor-dot,
+.cursor-ring {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 9999;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.cursor-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--pink);
+}
+
+.cursor-ring {
+    width: 34px;
+    height: 34px;
+    border: 2px solid rgba(255, 95, 158, 0.45);
+    transition: width .25s, height .25s, background .25s;
+}
+
+.cursor-ring.grow {
+    width: 62px;
+    height: 62px;
+    background: rgba(255, 95, 158, 0.1);
+}
+
+/* ---------- bintik sparkle (bergerak sangat pelan) ---------- */
+.magic-sparkles {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    background-image: radial-gradient(circle, rgba(255, 255, 255, .9) 1.4px, transparent 1.6px);
+    background-size: 54px 54px;
+    opacity: .5;
+    animation: sparkleDrift 40s linear infinite;
+}
+
+@keyframes sparkleDrift {
+    0% { background-position: 0 0; }
+    100% { background-position: 0 -54px; }
+}
+
+/* ---------- hati melayang pelan ---------- */
+.floating-hearts {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.heart {
+    position: absolute;
+    bottom: -50px;
+    font-size: 1.5rem;
+    opacity: .75;
+    filter: drop-shadow(0 4px 10px rgba(255, 105, 180, 0.3));
+    animation: floatHeart var(--float-duration, 22s) linear infinite;
+    animation-delay: var(--delay, 0s);
+}
+
+@keyframes floatHeart {
+    0% { transform: translate(0, 0) scale(.75); opacity: 0; }
+    12% { opacity: .75; }
+    88% { opacity: .75; }
+    100% { transform: translate(var(--translate-x, 0), -120vh) rotate(220deg) scale(1); opacity: 0; }
+}
+
+/* ---------- welcome ---------- */
+.welcome {
+    text-align: center;
+    padding: 5rem 1.5rem 2.5rem;
+    position: relative;
+    z-index: 3;
+}
+
+.eyebrow {
+    display: inline-block;
+    font-weight: 700;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    font-size: .72rem;
+    color: var(--violet);
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(168, 85, 247, 0.22);
+    padding: .45rem 1.1rem;
+    border-radius: 999px;
+    margin-bottom: 1.2rem;
+}
+
+.welcome h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(2.2rem, 6.5vw, 4.2rem);
+    font-weight: 700;
+    line-height: 1.15;
+    max-width: 16ch;
+    margin: 0 auto 1.2rem;
+    filter: drop-shadow(0 8px 20px rgba(255, 95, 158, 0.22));
+}
+
+/* gradasi per-huruf supaya tetap muncul saat ada transform animasi */
+.welcome h1 .char {
+    background: linear-gradient(90deg, #ff5f9e, #c084fc, #ffb27a);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    background-size: 250% 100%;
+    animation: shimmer 10s linear infinite;
+}
+
+@keyframes shimmer {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 250% 50%; }
+}
+
+.word {
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.char {
+    display: inline-block;
+    will-change: transform, opacity;
+}
+
+.welcome-sub {
+    font-size: clamp(1rem, 2.6vw, 1.12rem);
+    font-weight: 600;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.7;
+    color: rgba(107, 42, 82, 0.8);
+}
+
+/* ---------- petunjuk scroll ---------- */
+.scroll-cue {
+    margin-top: 2.2rem;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .6rem;
+    opacity: .75;
+}
+
+.mouse {
+    width: 24px;
+    height: 38px;
+    border: 2.5px solid rgba(255, 95, 158, 0.6);
+    border-radius: 14px;
+    display: block;
+    position: relative;
+}
+
+.wheel {
+    position: absolute;
+    top: 7px;
+    left: 50%;
+    width: 4px;
+    height: 7px;
+    margin-left: -2px;
+    border-radius: 3px;
+    background: var(--pink);
+}
+
+.cue-text {
+    font-size: .76rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: rgba(107, 42, 82, 0.55);
+}
+
+/* ---------- kartu kenangan ---------- */
+.memory-container {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 1rem 1.5rem 3rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.8rem;
+    z-index: 3;
+    position: relative;
+}
+
+.memory-card {
+    background: var(--glass);
+    border: 1.5px solid var(--stroke);
+    border-radius: 24px;
+    padding: 1.2rem;
+    box-shadow: 0 14px 34px rgba(190, 60, 130, 0.12);
+    backdrop-filter: blur(12px) saturate(130%);
+    -webkit-backdrop-filter: blur(12px) saturate(130%);
+    position: relative;
+    overflow: hidden;
+    transform-style: preserve-3d;
+    transition: box-shadow .4s, transform .4s;
+    will-change: transform;
+}
+
+.memory-card:hover {
+    box-shadow: 0 20px 46px rgba(190, 60, 130, 0.2);
+}
+
+.img-wrap {
+    position: relative;
+    border-radius: 18px;
+    margin-bottom: 1rem;
+    /* bingkai lembut supaya tepi foto tetap rapi tanpa perlu memotong */
+    background: linear-gradient(150deg, #ffeef6, #f3edff);
+    padding: 6px;
+}
+
+/* bingkai potret seragam; foto mengisi bingkai tanpa melar */
+.memory-img {
+    width: 100%;
+    height: auto;
+    /* bingkai tetap proporsional, tidak ikut bentuk foto */
+    aspect-ratio: 4 / 5;
+    /* foto mengisi bingkai penuh tanpa diregangkan (sedikit crop tepi) */
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    border-radius: 13px;
+}
+
+.memory-card:hover .memory-img {
+    transform: translateY(-3px);
+}
+
+/* foto aslinya persegi: bingkai ikut rasio 1:1 supaya sisinya nggak kepotong */
+.memory-img.ratio-square {
+    aspect-ratio: 1 / 1;
+}
+
+.tag {
+    position: absolute;
+    top: .7rem;
+    right: .7rem;
+    width: 40px;
+    height: 40px;
+    display: grid;
+    place-items: center;
+    font-size: 1.2rem;
+    background: rgba(255, 255, 255, 0.88);
+    border-radius: 50%;
+    backdrop-filter: blur(6px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+    animation: gentleWiggle 6s ease-in-out infinite;
+}
+
+@keyframes gentleWiggle {
+    0%, 100% { transform: rotate(-5deg); }
+    50% { transform: rotate(5deg); }
+}
+
+.memory-date {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--pink);
+    margin-bottom: .4rem;
+}
+
+.memory-caption {
+    font-size: .97rem;
+    font-weight: 500;
+    line-height: 1.65;
+    color: rgba(107, 42, 82, 0.85);
+}
+
+/* ---------- pesan penutup ---------- */
+.final-message {
+    padding: 2rem 1.5rem 3rem;
+    position: relative;
+    z-index: 3;
+}
+
+.final-glass {
+    max-width: 860px;
+    margin: 0 auto;
+    text-align: center;
+    padding: clamp(2rem, 6vw, 3.2rem) clamp(1.2rem, 5vw, 3rem);
+    background: rgba(255, 255, 255, 0.5);
+    border: 1.5px solid var(--stroke);
+    border-radius: 32px;
+    backdrop-filter: blur(16px) saturate(130%);
+    -webkit-backdrop-filter: blur(16px) saturate(130%);
+    box-shadow: 0 22px 56px rgba(190, 60, 130, 0.14);
+}
+
+.final-glass h2 {
+    font-family: 'Baloo 2', cursive;
+    font-size: clamp(1.8rem, 5.5vw, 2.8rem);
+    font-weight: 800;
+    background: linear-gradient(90deg, #ff5f9e, #c084fc, #ffb27a);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    background-size: 250% 100%;
+    animation: shimmer 8s linear infinite;
+    margin-bottom: 1.5rem;
+}
+
+.final-glass p {
+    font-size: clamp(1rem, 2.5vw, 1.1rem);
+    font-weight: 500;
+    max-width: 740px;
+    margin: 0 auto 1.3rem;
+    line-height: 1.85;
+    color: rgba(107, 42, 82, 0.88);
+}
+
+.highlight {
+    font-weight: 700 !important;
+    color: var(--ink) !important;
+    background: linear-gradient(180deg, transparent 62%, rgba(255, 143, 199, 0.4) 62%);
+    display: inline;
+    padding: .1rem .2rem;
+    border-radius: 6px;
+}
+
+.signature {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.5rem;
+    color: var(--pink);
+    margin: 1.7rem 0 1.9rem;
+    animation: gentleFloat 4.5s ease-in-out infinite;
+}
+
+@keyframes gentleFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+/* ---------- tombol ---------- */
+.goodbye-btn,
+.party-btn {
+    display: inline-block;
+    padding: .95rem 2.1rem;
+    font-family: 'Baloo 2', cursive;
+    font-size: 1.05rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 999px;
+    text-decoration: none;
+    margin: .4rem .35rem 0;
+    transition: transform .25s, box-shadow .25s;
+}
+
+.goodbye-btn {
+    color: #fff;
+    background: linear-gradient(120deg, #ff5f9e, #c084fc);
+    box-shadow: 0 12px 28px rgba(255, 95, 158, 0.35);
+    animation: glowPulse 5s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+    0%, 100% { box-shadow: 0 12px 28px rgba(255, 95, 158, 0.3), 0 0 0 0 rgba(255, 95, 158, 0.3); }
+    50% { box-shadow: 0 14px 34px rgba(255, 95, 158, 0.42), 0 0 0 14px rgba(255, 95, 158, 0); }
+}
+
+.party-btn {
+    color: var(--pink);
+    background: rgba(255, 255, 255, 0.8);
+    border: 2px solid rgba(255, 95, 158, 0.35);
+    box-shadow: 0 8px 20px rgba(190, 60, 130, 0.12);
+    cursor: none;
+}
+
+.goodbye-btn:hover,
+.party-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 34px rgba(255, 95, 158, 0.42);
+}
+
+.goodbye-btn:active,
+.party-btn:active {
+    transform: scale(.98);
+}
+
+.foot {
+    text-align: center;
+    padding: 0 1rem 2.6rem;
+    font-size: .84rem;
+    font-weight: 600;
+    color: rgba(107, 42, 82, 0.5);
+    position: relative;
+    z-index: 3;
+}
+
+/* ---------- elemen melayang ---------- */
+.floating {
+    position: fixed;
+    pointer-events: none;
+    z-index: 3;
+    opacity: 0;
+    will-change: transform, opacity;
+}
+
+/* ---------- reveal on scroll ---------- */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.reveal.shown {
+    opacity: 1;
+    transform: none;
+    transition: opacity .7s ease, transform .7s ease;
+}
+
+/* ---------- scrollbar ---------- */
+::-webkit-scrollbar { width: 12px; }
+::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.4); }
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, #ff9ecb, #c9a7ff);
+    border-radius: 6px;
+}
+
+/* ---------- tombol musik ---------- */
+.music-btn {
+    position: fixed;
+    top: 1.1rem;
+    right: 1.1rem;
+    z-index: 50;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1.5px solid var(--stroke);
+    background: rgba(255, 255, 255, 0.75);
+    font-size: 1.15rem;
+    display: grid;
+    place-items: center;
+    box-shadow: 0 8px 20px rgba(190, 60, 130, 0.16);
+    cursor: none;
+    opacity: 1;
+    transition: transform .25s, background .25s;
+}
+
+.music-btn:hover { transform: scale(1.08); }
+
+.music-btn.playing {
+    background: linear-gradient(120deg, #ff5f9e, #c084fc);
+}
+
+/* ---------- responsif ---------- */
+@media (max-width: 768px) {
+    .memory-container {
+        grid-template-columns: 1fr;
+        gap: 1.3rem;
+        padding: 1rem 1.1rem 2.4rem;
+    }
+
+    /* blur berat dimatikan di HP, kartu dibuat lebih pekat */
+    .memory-card,
+    .final-glass {
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+    }
+
+    .memory-card { background: rgba(255, 255, 255, 0.85); }
+    .final-glass { background: rgba(255, 255, 255, 0.82); }
+
+    .magic-sparkles { opacity: .35; }
+}
+
+/* layar sangat kecil */
+@media (max-width: 380px) {
+    .welcome { padding: 3.4rem 1rem 2rem; }
+    .welcome h1 { font-size: clamp(2rem, 9vw, 2.8rem); }
+    .memory-container { padding-left: .9rem; padding-right: .9rem; }
+    .memory-card { padding: 1rem; border-radius: 20px; }
+    .final-message { padding: 1.5rem 1rem 2.4rem; }
+    .final-glass { padding: 1.8rem 1.1rem; border-radius: 24px; }
+    .goodbye-btn,
+    .party-btn {
+        display: block;
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+@media (max-height: 480px) and (orientation: landscape) {
+    .welcome { padding: 2.6rem 1.2rem 1.6rem; }
+    .cursor-dot, .cursor-ring { display: none; }
+}
+
+@media (hover: none), (pointer: coarse) {
+    * { cursor: auto; }
+    .cursor-dot, .cursor-ring { display: none; }
+    .goodbye-btn, .party-btn { cursor: pointer; }
+    .goodbye-btn, .party-btn { min-height: 48px; }
+}
+
+/* ---------- aksesibilitas ---------- */
+@media (prefers-reduced-motion: reduce) {
+    .magic-sparkles,
+    .heart,
+    .welcome h1 .char,
+    .final-glass h2,
+    .tag,
+    .signature,
+    .goodbye-btn {
+        animation: none !important;
+    }
+
+    .heart { display: none; }
+
+    .memory-card,
+    .memory-img,
+    .reveal,
+    .reveal.shown {
+        transition-duration: .01ms !important;
+    }
+
+    .reveal { opacity: 1; transform: none; }
+}

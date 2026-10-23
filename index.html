@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Selamat Ulang Tahun</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Quicksand:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- orb warna melayang -->
+    <div class="orbs">
+        <span></span><span></span><span></span><span></span><span></span>
+    </div>
+
+    <!-- kursor kustom -->
+    <div class="cursor-ring"></div>
+    <div class="cursor-dot"></div>
+
+    <!-- tombol musik -->
+    <button class="music-btn" id="music-btn" title="Nyalain musik">🎵</button>
+
+    <div class="container">
+        <div class="glass">
+            <p class="eyebrow">Untuk Kamu, Hari Ini</p>
+
+            <div class="hero-photo">
+                <img src="./hero.jpg" alt="Foto kamu" width="1100" height="896" decoding="async">
+            </div>
+
+            <h1 class="title">
+                <span class="line split">Selamat</span>
+                <span class="line split gradient-text">Ulang Tahun</span>
+                <span class="line split name" id="js-name">Sayang</span>
+            </h1>
+
+            <div class="greeting-wrap">
+                <span class="greeting"></span><span class="caret"></span>
+            </div>
+
+            <button class="cta-button">
+                <span class="label">Buka Kejutannya</span>
+            </button>
+
+            <p class="hint">Santai aja, nggak usah buru-buru.</p>
+        </div>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="fx.js"></script>
+    <script src="script.js"></script>
+    <script src="music.js"></script>
+</body>
+
+</html>

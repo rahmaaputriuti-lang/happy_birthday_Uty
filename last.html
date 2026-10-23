@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Kenangan Kita</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Baloo+2:wght@600;700;800&family=Quicksand:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link rel="stylesheet" href="last.css">
+</head>
+
+<body>
+    <div class="magic-sparkles"></div>
+
+    <!-- beberapa hati melayang pelan -->
+    <div class="floating-hearts">
+        <div class="heart" style="--float-duration: 22s; --delay: 0s; --translate-x: 18px;">💖</div>
+        <div class="heart" style="--float-duration: 27s; --delay: 6s; --translate-x: -26px;">💗</div>
+        <div class="heart" style="--float-duration: 24s; --delay: 12s; --translate-x: 32px;">💕</div>
+        <div class="heart" style="--float-duration: 30s; --delay: 18s; --translate-x: -18px;">🩷</div>
+    </div>
+
+    <div class="cursor-dot"></div>
+    <div class="cursor-ring"></div>
+
+    <!-- tombol musik -->
+    <button class="music-btn" id="music-btn" title="Nyalain musik">🎵</button>
+
+    <section class="welcome">
+        <p class="eyebrow">Kenangan</p>
+        <h1 class="split">Beberapa Kenangan Kita</h1>
+        <p class="welcome-sub">Nggak semua momen kefoto, tapi ini beberapa yang paling keingat. Aku taruh di sini biar
+            gampang dicari ...</p>
+        <div class="scroll-cue">
+            <span class="mouse"><span class="wheel"></span></span>
+            <span class="cue-text">Gulir ke bawah</span>
+        </div>
+    </section>
+
+    <div class="memory-container">
+        <article class="memory-card reveal">
+            <div class="img-wrap">
+                <img src="./d3.jpg" alt="Berdua di restoran" class="memory-img ratio-square" width="1100" height="1100" loading="lazy"
+                    decoding="async">
+                <span class="tag">💖</span>
+            </div>
+            <div class="memory-date">Hari Yang Biasa</div>
+            <div class="memory-caption">Ngobrol hal nggak penting, ketawa nggak jelas. Hari-hari kayak gini yang paling
+                lama nempel di ingatan.</div>
+        </article>
+
+        <article class="memory-card reveal">
+            <div class="img-wrap">
+                <img src="./d1.jpg" alt="Selfie berdua" class="memory-img" width="619" height="1100" loading="lazy"
+                    decoding="async">
+                <span class="tag">🌸</span>
+            </div>
+            <div class="memory-date">Tanpa Rencana</div>
+            <div class="memory-caption">Foto ini bukan disengaja, cuma kebetulan waktu itu. Malah jadi salah satu yang
+                paling sering aku buka lagi.</div>
+        </article>
+
+        <article class="memory-card reveal">
+            <div class="img-wrap">
+                <img src="./d2.jpg" alt="Foto bunga" class="memory-img" width="823" height="1100" loading="lazy"
+                    decoding="async">
+                <span class="tag">✨</span>
+            </div>
+            <div class="memory-date">Sesuatu Buat Kamu</div>
+            <div class="memory-caption">Makasih untuk semuanya, termasuk hal-hal kecil yang kamu sendiri mungkin lupa
+                pernah lakuin.</div>
+        </article>
+    </div>
+
+    <section class="final-message reveal">
+        <div class="final-glass">
+            <h2>Makasih Udah Sampai Sini</h2>
+            <p>Makasih udah dengerin aku ngomong apa aja, termasuk curhatan yang nggak penting. Juga makasih udah
+                sabar sama kelakuan aku yang kadang bikin geleng-geleng. 😄</p>
+            <p>Di ulang tahun ini aku nggak mau muluk-muluk. Cuma mau kamu sehat, tidur cukup, dan urusan yang bikin
+                pusing pelan-pelan beres.</p>
+            <p class="highlight">Kalau nanti berat, bilang aja. Nggak harus kuatin diri sendiri terus.</p>
+
+            <div class="signature">Selamat ulang tahun</div>
+
+            <a href="index.html" class="goodbye-btn">Sampai Ketemu Lagi</a>
+
+            <button class="party-btn" id="party-btn">Kembang Api Lagi</button>
+        </div>
+    </section>
+
+    <footer class="foot">Dibuat pelan-pelan, buat kamu</footer>
+
+    <script src="config.js"></script>
+    <script src="fx.js"></script>
+    <script src="last.js"></script>
+    <script src="music.js"></script>
+</body>
+
+</html>

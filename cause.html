@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Kenapa Kamu Spesial</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Quicksand:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link rel="stylesheet" href="./cause.css">
+</head>
+
+<body class="step-cake">
+    <div class="orbs">
+        <span></span><span></span><span></span><span></span>
+    </div>
+
+    <div class="custom-cursor">
+        <svg viewBox="0 0 24 24">
+            <path fill="#ff69b4"
+                d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+        </svg>
+    </div>
+
+    <!-- tombol musik -->
+    <button class="music-btn" id="music-btn" title="Nyalain musik">🎵</button>
+
+    <!-- kue ulang tahun & tiup lilin (mengambang, ketuk di mana aja) -->
+    <div class="cake-overlay" id="cake-overlay" role="dialog" aria-modal="true" aria-label="Tiup lilin ulang tahun">
+        <div class="cake-popup">
+            <div class="cake-stage">
+                <div class="cake" id="cake">
+                    <div class="candles" id="candles"></div>
+                    <div class="cake-tier tier-top"><span class="icing"></span></div>
+                    <div class="cake-tier tier-mid"><span class="icing"></span></div>
+                    <div class="cake-tier tier-bot"><span class="icing"></span></div>
+                    <div class="cake-plate"></div>
+                </div>
+            </div>
+            <p class="cake-instruction">Tiup lilinnya, atau tap di mana aja.</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <p class="eyebrow">Dari Aku, Selamat Ulang Tahun <span id="js-name">Sayang</span></p>
+        <h1>Kenapa Kamu Spesial</h1>
+        <p class="subtitle">Daripada cuma bilang selamat terus lewat, aku tulis aja beberapa hal yang bikin
+            aku bersyukur ada kamu. Singkat, jujur, tanpa muluk-muluk.</p>
+
+        <!-- indikator progres -->
+        <div class="progress">
+            <div class="progress-bar"><span class="progress-fill"></span></div>
+            <div class="progress-text">0 dari 6</div>
+        </div>
+
+        <div id="reasons-container"></div>
+
+        <button class="shuffle-button">
+            <span class="label">Tambah Satu Lagi</span>
+        </button>
+
+        <div class="reason-counter"></div>
+
+        <div class="ending-section">
+            <div class="teddy-hug">
+                <img src="./cause.jpg" alt="Foto kamu" width="819" height="1100" decoding="async">
+                <div class="teddy-glow"></div>
+            </div>
+            <div class="ending-text">Yang paling aku mau cuma satu: kamu <span class="gradient-text">sehat</span> dan
+                selalu tenang, ya.</div>
+            <div class="ending-sub">Sisanya biar kita jalani pelan-pelan. Aku di sini, kok.</div>
+        </div>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="fx.js"></script>
+    <script src="cause.js"></script>
+    <script src="cake.js"></script>
+    <script src="music.js"></script>
+</body>
+
+</html>
